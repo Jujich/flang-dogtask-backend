@@ -1,0 +1,5 @@
+-- CreateTable
+CREATE TABLE "DogCard" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "imageUrl" TEXT NOT NULL
+);
