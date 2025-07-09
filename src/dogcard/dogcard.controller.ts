@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { DogcardService } from './dogcard.service';
 import { DogapiService } from '../dogapi/dogapi.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -12,8 +12,11 @@ export class DogcardController {
   }
 
   @Get()
-  findAll() {
-    return this.dogcardService.findAll();
+  findAll(@Query('page') page: number = 1, @Query('limit') limit: number = 10) {
+    return this.dogcardService.findAll({
+      page: Number(page),
+      limit: Number(limit),
+    });
   }
 
   @Get(':id')
